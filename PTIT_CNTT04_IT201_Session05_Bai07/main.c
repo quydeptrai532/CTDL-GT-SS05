@@ -1,17 +1,36 @@
 #include <stdio.h>
 
-// Hàm đệ quy tính số Fibonacci thứ n
+// Hàm đệ quy tính số Fibonacci tại vị trí n
 int fibonacci(int n) {
-    if (n == 0) return 0;           // Trường hợp cơ bản 1
-    else if (n == 1) return 1;      // Trường hợp cơ bản 2
-    else return fibonacci(n - 1) + fibonacci(n - 2); // Gọi đệ quy
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 int main() {
     int n;
-    printf("Nhap vi tri n trong day Fibonacci: ");
+    printf("Nhap so nguyen duong n: ");
     scanf("%d", &n);
 
-    printf("So Fibonacci tai vi tri %d la: %d\n", n, fibonacci(n));
+    if (n <= 0) {
+        printf("Input khong hop le\n");
+        return 0;
+    }
+
+    int result[n];
+    for (int i = 0; i < n; i++) {
+        result[i] = fibonacci(i);
+    }
+
+    // In mảng kết quả
+    printf("[");
+    for (int i = 0; i < n; i++) {
+        printf("%d", result[i]);
+        if (i != n - 1) {
+            printf(",");
+        }
+    }
+    printf("]\n");
+
     return 0;
 }
